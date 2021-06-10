@@ -1,0 +1,132 @@
+.navigationContainer {
+  height: 50px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  color: black;
+  position: fixed;
+  z-index: 3;
+  top: 0vh;
+  width: 100%;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+
+  .title {
+    flex: 0.3;
+    font-size: 2rem;
+
+    .text {
+      margin-left: 2rem;
+      color: #90cdf4;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .searchBox {
+    flex: 0.4;
+  }
+
+  .placeholder {
+    flex: 0.2;
+    display: none;
+  }
+
+  .email {
+    flex: 0.2;
+    text-align: center;
+  }
+
+  .upload {
+    flex: 0.2;
+    text-align: center;
+
+    .host {
+      padding: 2px;
+      // box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+      background-color: #90cdf4;
+      border: none;
+      border-radius: 5px;
+      max-width: 120px;
+      margin: 0 auto auto;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .account {
+    font-size: 32px;
+    flex: 0.05;
+    justify-content: end;
+
+    * {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.scrolled {
+  z-index: 2;
+  background-color: #222629;
+  transition: 0.3s;
+  width: 100%;
+
+  .email {
+    color: #fff;
+  }
+}
+
+@media (max-width: 441px) {
+  .navigationContainer {
+    .placeholder {
+      display: none;
+    }
+
+    .searchBox {
+      flex: 0;
+    }
+
+    .upload {
+      flex: 0.5;
+    }
+  }
+}
+
+@media (max-width: 522px) {
+  .navigationContainer {
+    .email {
+      display: none;
+    }
+    .placeholder {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 755px) {
+  .navigationContainer {
+    .searchBox {
+      flex: 0.2;
+    }
+
+    .email {
+      flex: 0;
+    }
+
+    .title {
+      h4 {
+        margin: 0;
+      }
+    }
+
+    .upload {
+      flex: 0.3;
+    }
+  }
+}

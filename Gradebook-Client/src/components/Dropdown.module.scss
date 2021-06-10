@@ -1,0 +1,28 @@
+.cartDropDown {
+    position: absolute;
+    width: 140px;
+    max-height: 180px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    top: 50px;
+    right: 50px;
+    color: black;
+    z-index: 5;
+  
+    a {
+      color: black;
+      margin-bottom: 10px;
+      padding: 2px;
+      border-radius: 5px;
+    }
+  
+    a:hover {
+      background-color: rgb(240, 240, 240);
+    }
+  }
+  

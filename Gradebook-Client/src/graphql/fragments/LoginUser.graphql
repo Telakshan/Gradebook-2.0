@@ -1,0 +1,4 @@
+fragment LoginUser on User{
+    id
+    username
+}
