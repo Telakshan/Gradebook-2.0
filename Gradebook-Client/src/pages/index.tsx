@@ -4,10 +4,24 @@ import { usePostsQuery } from "../generated/graphql";
 import NavBarContainer from "../components/NavBarContainer";
 import NextLink from "next/link";
 import { Button } from "@chakra-ui/button";
-import { Stack, Box, Heading, Text, Flex, Spinner } from "@chakra-ui/react";
-import { ArrowForwardIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  Stack,
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Spinner,
+  Icon,
+} from "@chakra-ui/react";
+import {
+  ArrowForwardIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@chakra-ui/icons";
 import Wrapper from "../components/Wrapper";
 import React, { useState } from "react";
+import { IconButton } from "@chakra-ui/react";
+import Upvote from "../components/Upvote";
 
 const Index: React.FC = () => {
   const [variables, setVariables] = useState({
@@ -40,7 +54,7 @@ const Index: React.FC = () => {
     <NavBarContainer>
       <Wrapper>
         <Flex p={2}>
-          <Heading color="#90cdf4">Welcome to Gradebook</Heading>
+          <Heading color="#90cdf4" className="welcome">Welcome to Gradebook</Heading>
           <NextLink href="create-post">
             <Button
               ml="auto"
@@ -58,11 +72,16 @@ const Index: React.FC = () => {
         ) : (
           <Stack spacing={8}>
             {data!.posts.posts.map((d) => (
-              <Box key={d.id} p={5} shadow="md" borderWidth="1px">
-                <Heading fontSize="xl">{d.title}</Heading> {p.creator}
-
-                <Text mt={4}>{d.textSnippet}...</Text>
-              </Box>
+              <Flex key={d.id} p={5} shadow="md" borderWidth="1px">
+                <Upvote post={d}/>
+                <Box>
+                  <Heading fontSize="xl">{d.title}</Heading>
+                  <Heading fontSize="xs" mt={3}>
+                    Posted by {d.creator.username}
+                  </Heading>
+                  <Text mt={4}>{d.textSnippet}...</Text>
+                </Box>
+              </Flex>
             ))}
           </Stack>
         )}
@@ -86,7 +105,11 @@ const Index: React.FC = () => {
             Load more
           </Button>
         </Flex>
-      ) : null}
+      ) : (
+        <Heading fontSize="s" mb={10} mt={10}>
+          End of list
+        </Heading>
+      )}
     </NavBarContainer>
   );
 };

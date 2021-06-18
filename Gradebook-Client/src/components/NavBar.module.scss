@@ -94,6 +94,7 @@
 
     .upload {
       flex: 0.5;
+      justify-content: end;
     }
   }
 }
@@ -106,13 +107,21 @@
     .placeholder {
       display: block;
     }
+
+    .upload {
+      justify-content: end;
+    }
+
+    .searchBox {
+      flex: 0.3;
+    }
   }
 }
 
 @media (max-width: 755px) {
   .navigationContainer {
     .searchBox {
-      flex: 0.2;
+      flex: 0.5;
     }
 
     .email {
@@ -127,6 +136,7 @@
 
     .upload {
       flex: 0.3;
+      justify-content: end;
     }
   }
 }

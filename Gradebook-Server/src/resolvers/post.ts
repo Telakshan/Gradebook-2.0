@@ -17,7 +17,6 @@ import {
 import { getConnection } from "typeorm";
 import { isAuth } from "../middleware/isAuth";
 import { Upvote } from "../entities/Upvote";
-import { query } from "express";
 
 @InputType()
 class PostInput {
@@ -154,26 +153,26 @@ export class PostResolver {
     const realValue = isUpvote ? 1 : -1;
 
     const { userId } = req.session;
-    // await Upvote.insert({
-    //   userId,
-    //   postId,
-    //   value: realValue,
-    // });
+    await Upvote.insert({
+      userId,
+      postId,
+      value: realValue,
+    });
 
-    await getConnection().query(
-      `
-      START TRANSACTION;
-      insert into upvote ("userId", "postId", value)
-      values (${userId}, ${postId}, ${realValue});
+    // await getConnection().query(
+    //   `
+    //   START TRANSACTION;
+    //   insert into upvote ("userId", "postId", value)
+    //   values (${userId}, ${postId}, ${realValue});
 
-      update post 
-      set points = points + ${realValue}
-      where id = ${postId};
+    //   update post 
+    //   set points = points + ${realValue}
+    //   where id = ${postId};
 
-      COMMIT;
-      `,
-      [userId, postId, realValue, realValue, postId]
-    );
+    //   COMMIT;
+    //   `,
+    //   [userId, postId, realValue, realValue, postId]
+    // );
 
     return true;
   }
