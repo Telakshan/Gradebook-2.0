@@ -31,7 +31,7 @@ export class User extends BaseEntity {
 
   @Column(() => String)
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date; 
 
   @Column(() => String)
   @UpdateDateColumn()
@@ -40,7 +40,7 @@ export class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.creator)
   posts: Post[];
 
-  // @OneToMany(() => Upvote, (upvote) => upvote.user)
-  // upvotes: Upvote[];
+  @OneToMany(() => Upvote, (upvote) => upvote.user)
+  upvotes: Upvote[];
 
 }

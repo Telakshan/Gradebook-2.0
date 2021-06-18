@@ -14,6 +14,7 @@ import { User } from "./entities/User";
 import { createConnection } from "typeorm";
 import { createUserLoader } from "./utils/createUserLoader";
 import { PostResolver } from "./resolvers/post";
+import { Upvote } from "./entities/Upvote";
 
 const main = async () => {
   //   dropSchema: true,
@@ -26,9 +27,9 @@ const main = async () => {
     password: "password",
     database: "reddit",
     migrations: [path.join(__dirname, "./migrations/*")],
-    entities: [Post, User],
+    entities: [Post, User, Upvote],
     synchronize: true,
-   // logging: true,
+    logging: true,
   })
     .then(() => {
       console.log("Database connected...");

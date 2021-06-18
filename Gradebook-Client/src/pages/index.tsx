@@ -11,14 +11,12 @@ import React, { useState } from "react";
 
 const Index: React.FC = () => {
   const [variables, setVariables] = useState({
-    limit: 10,
+    limit: 15,
     cursor: null as null | string,
   });
   const [{ data, fetching }] = usePostsQuery({
     variables,
   });
-
-  
 
   if (!fetching && !data) {
     return (
@@ -37,9 +35,6 @@ const Index: React.FC = () => {
       </NavBarContainer>
     );
   }
-
-  console.log('hasMore', data?.posts.hasMore)
-
 
   return (
     <NavBarContainer>
@@ -64,8 +59,8 @@ const Index: React.FC = () => {
           <Stack spacing={8}>
             {data!.posts.posts.map((d) => (
               <Box key={d.id} p={5} shadow="md" borderWidth="1px">
-                <Heading fontSize="xl">{d.title}</Heading>
-                
+                <Heading fontSize="xl">{d.title}</Heading> {p.creator}
+
                 <Text mt={4}>{d.textSnippet}...</Text>
               </Box>
             ))}

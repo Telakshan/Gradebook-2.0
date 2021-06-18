@@ -154,20 +154,26 @@ export class PostResolver {
     const realValue = isUpvote ? 1 : -1;
 
     const { userId } = req.session;
-    await Upvote.insert({
-      userId,
-      postId,
-      value: realValue,
-    });
+    // await Upvote.insert({
+    //   userId,
+    //   postId,
+    //   value: realValue,
+    // });
 
     await getConnection().query(
-      `update post p
-      set p.points = p.points + $1
-      where p.id = $2
-      `,
-      [realValue, postId]
-    );
+      `
+      START TRANSACTION;
+      insert into upvote ("userId", "postId", value)
+      values (${userId}, ${postId}, ${realValue});
 
+      update post 
+      set points = points + ${realValue}
+      where id = ${postId};
+
+      COMMIT;
+      `,
+      [userId, postId, realValue, realValue, postId]
+    );
 
     return true;
   }
