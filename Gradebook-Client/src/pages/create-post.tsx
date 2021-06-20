@@ -12,7 +12,6 @@ import { isAuthorized } from "./utils/isAuthorized";
 const CreatePost: React.FC<{}> = () => {
   isAuthorized();
 
-  
   const router = useRouter();
   const [, createPost] = useCreatePostMutation();
 

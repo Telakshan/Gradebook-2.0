@@ -1,17 +1,17 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import styles from "./Dropdown.module.scss";
 
 const Dropdown = () => {
   return (
     <div className={styles.cartDropDown}>
-      <Link href="/login">Log in</Link>
+      <NextLink href="/login">Log in</NextLink>
 
-      <Link href="/register">Register</Link>
+      <NextLink href="/register">Register</NextLink>
 
-      <Link href="/help">Help</Link>
+      <NextLink href="/help">Help</NextLink>
 
-      <Link href="/">Info</Link>
+      <NextLink href="/">Info</NextLink>
     </div>
   );
 };

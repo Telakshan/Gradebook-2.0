@@ -6,12 +6,15 @@ import { useRouter } from "next/router";
 import Button from "../components/Button";
 import { Box } from "@chakra-ui/react";
 import { isServer } from "../pages/utils/isServer";
+import { IoIosLaptop } from "react-icons/io";
+import NextLink from "next/link";
+
 
 interface NavBarProps {}
 
 const NavBar: React.FC<NavBarProps> = ({}) => {
   const router = useRouter();
-  const [{ fetching: logoutFetching }, logout] = useLogoutMutation();
+  const [, logout] = useLogoutMutation();
   const [{ data, fetching }] = useMeQuery({
     pause: isServer(),
   });
@@ -31,7 +34,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
 
   if (fetching) {
     body = null;
-} else if (!data?.me) {
+  } else if (!data?.me) {
     body = (
       <>
         <div className={styles.upload}>
@@ -78,9 +81,11 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
       }`}
     >
       <div className={styles.title}>
-        <Link href="/">
+        <IoIosLaptop className={styles.logo} />
+
+        <NextLink href="/">
           <h4 className={styles.text}>Gradebook</h4>
-        </Link>
+        </NextLink>
       </div>
       <div className={styles.searchBox}></div>
       {body}

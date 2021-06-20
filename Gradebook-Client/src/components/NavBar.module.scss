@@ -11,11 +11,19 @@
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 
   .title {
+    display: flex;
     flex: 0.3;
     font-size: 2rem;
 
+    .logo {
+      font-size: 42px;
+      justify-content: center;
+      text-align: center;
+      margin-top: 6px;
+    }
+
     .text {
-      margin-left: 2rem;
+      margin-left: 5px;
       color: #90cdf4;
       cursor: pointer;
       &:hover {
@@ -77,6 +85,10 @@
   transition: 0.3s;
   width: 100%;
 
+  .logo{
+    color: #fff;
+  }
+
   .email {
     color: #fff;
   }
@@ -84,17 +96,25 @@
 
 @media (max-width: 441px) {
   .navigationContainer {
+
+    .title{
+      flex: 0.5;
+    }
     .placeholder {
       display: none;
     }
 
     .searchBox {
       flex: 0;
+      display: none;
     }
 
     .upload {
       flex: 0.5;
       justify-content: end;
+
+        .host {
+      }
     }
   }
 }

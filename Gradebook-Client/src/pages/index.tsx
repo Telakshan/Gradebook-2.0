@@ -11,16 +11,11 @@ import {
   Text,
   Flex,
   Spinner,
-  Icon,
+  Link,
 } from "@chakra-ui/react";
-import {
-  ArrowForwardIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@chakra-ui/icons";
+import { ArrowForwardIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import Wrapper from "../components/Wrapper";
 import React, { useState } from "react";
-import { IconButton } from "@chakra-ui/react";
 import Upvote from "../components/Upvote";
 
 const Index: React.FC = () => {
@@ -54,7 +49,9 @@ const Index: React.FC = () => {
     <NavBarContainer>
       <Wrapper>
         <Flex p={2}>
-          <Heading color="#90cdf4" className="welcome">Welcome to Gradebook</Heading>
+          <Heading color="#90cdf4" className="welcome">
+            Welcome to Gradebook
+          </Heading>
           <NextLink href="create-post">
             <Button
               ml="auto"
@@ -73,9 +70,14 @@ const Index: React.FC = () => {
           <Stack spacing={8}>
             {data!.posts.posts.map((d) => (
               <Flex key={d.id} p={5} shadow="md" borderWidth="1px">
-                <Upvote post={d}/>
+                <Upvote post={d} />
                 <Box>
-                  <Heading fontSize="xl">{d.title}</Heading>
+                  <NextLink href="/post/[id]" as={`/post/${d.id}`}>
+                    <Link>
+                      <Heading fontSize="xl">{d.title}</Heading>
+                    </Link>
+                  </NextLink>
+
                   <Heading fontSize="xs" mt={3}>
                     Posted by {d.creator.username}
                   </Heading>
