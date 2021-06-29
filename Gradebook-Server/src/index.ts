@@ -15,6 +15,7 @@ import { createConnection } from "typeorm";
 import { createUserLoader } from "./utils/createUserLoader";
 import { PostResolver } from "./resolvers/post";
 import { Upvote } from "./entities/Upvote";
+import { createUpvoteLoader } from "./utils/createUpvoteLoader";
 
 const main = async () => {
   //   dropSchema: true,
@@ -83,6 +84,7 @@ const main = async () => {
       res,
       userLoader: createUserLoader(),
       redis,
+      upvoteLoading: createUpvoteLoader(),
     }),
   });
 

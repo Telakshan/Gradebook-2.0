@@ -9,7 +9,6 @@ import { isServer } from "../pages/utils/isServer";
 import { IoIosLaptop } from "react-icons/io";
 import NextLink from "next/link";
 
-
 interface NavBarProps {}
 
 const NavBar: React.FC<NavBarProps> = ({}) => {
@@ -52,9 +51,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
   } else {
     body = (
       <>
-        <Box className={styles.email}>
-          <Box>{data.me.username}</Box>
-        </Box>
+        <Box className={styles.email}>{data.me.username}</Box>
 
         <Box className={styles.placeholder}></Box>
 
@@ -63,7 +60,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
             <Button
               onClick={async () => {
                 await logout();
-                router.push("/");
+                router.reload();
               }}
             >
               Log out

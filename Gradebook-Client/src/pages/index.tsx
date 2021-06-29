@@ -1,29 +1,30 @@
-import { withUrqlClient } from "next-urql";
-import { createUrqlClient } from "./utils/createUrqlClient";
-import { usePostsQuery } from "../generated/graphql";
-import NavBarContainer from "../components/NavBarContainer";
-import NextLink from "next/link";
 import { Button } from "@chakra-ui/button";
-import {
-  Stack,
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Spinner,
-  Link,
-} from "@chakra-ui/react";
 import { ArrowForwardIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import Wrapper from "../components/Wrapper";
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  Spinner,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { withUrqlClient } from "next-urql";
+import NextLink from "next/link";
 import React, { useState } from "react";
+import EditDeletePostButtons from "../components/EditDeletePostButtons";
+import NavBarContainer from "../components/NavBarContainer";
 import Upvote from "../components/Upvote";
+import Wrapper from "../components/Wrapper";
+import { useMeQuery, usePostsQuery } from "../generated/graphql";
+import { createUrqlClient } from "./utils/createUrqlClient";
 
 const Index: React.FC = () => {
   const [variables, setVariables] = useState({
     limit: 15,
     cursor: null as null | string,
   });
-  const [{ data, fetching }] = usePostsQuery({
+  const [{ data, error, fetching }] = usePostsQuery({
     variables,
   });
 
@@ -31,6 +32,7 @@ const Index: React.FC = () => {
     return (
       <NavBarContainer>
         <Heading>No posts have been created. May be create one?</Heading>
+        <div>{error?.message}</div>
         <NextLink href="create-post">
           <Button
             mt={4}
@@ -68,23 +70,35 @@ const Index: React.FC = () => {
           <Spinner />
         ) : (
           <Stack spacing={8}>
-            {data!.posts.posts.map((d) => (
-              <Flex key={d.id} p={5} shadow="md" borderWidth="1px">
-                <Upvote post={d} />
-                <Box>
-                  <NextLink href="/post/[id]" as={`/post/${d.id}`}>
-                    <Link>
-                      <Heading fontSize="xl">{d.title}</Heading>
-                    </Link>
-                  </NextLink>
+            {data!.posts.posts.map((d) =>
+              !d ? null : (
+                <Flex key={d.id} p={5} shadow="md" borderWidth="1px">
+                  <Upvote post={d} />
+                  <Box flex={1}>
+                    <NextLink href="/post/[id]" as={`/post/${d.id}`}>
+                      <Link>
+                        <Heading fontSize="xl">{d.title}</Heading>
+                      </Link>
+                    </NextLink>
 
-                  <Heading fontSize="xs" mt={3}>
-                    Posted by {d.creator.username}
-                  </Heading>
-                  <Text mt={4}>{d.textSnippet}...</Text>
-                </Box>
-              </Flex>
-            ))}
+                    <Heading fontSize="xs" mt={3}>
+                      Posted by {d.creator.username}
+                    </Heading>
+                    <Flex align="center">
+                      <Text flex={1} mt={4}>
+                        {d.textSnippet}...
+                      </Text>
+                      <Box ml="auto">
+                        <EditDeletePostButtons
+                          id={d.id}
+                          creatorId={d.creatorId}
+                        />
+                      </Box>
+                    </Flex>
+                  </Box>
+                </Flex>
+              )
+            )}
           </Stack>
         )}
       </Wrapper>

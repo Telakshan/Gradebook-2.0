@@ -16,49 +16,47 @@ const CreatePost: React.FC<{}> = () => {
   const [, createPost] = useCreatePostMutation();
 
   return (
-    <>
-      <NavBarContainer variant="small">
-        <Formik
-          initialValues={{ title: "", text: "" }}
-          onSubmit={async (values) => {
-            const { error } = await createPost({ input: values });
-            if (!error) {
-              router.push("/");
-            }
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form>
+    <NavBarContainer variant="small">
+      <Formik
+        initialValues={{ title: "", text: "" }}
+        onSubmit={async (values) => {
+          const { error } = await createPost({ input: values });
+          if (!error) {
+            router.push("/");
+          }
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <InputField
+              textarea={false}
+              name="title"
+              placeholder="Add your title here..."
+              label="Title"
+            />
+            <Box mt={4}>
               <InputField
-                textarea={false}
-                name="title"
-                placeholder="Add your title here..."
-                label="Title"
+                textarea={true}
+                name="text"
+                placeholder="Add your text here..."
+                label="Text"
+                type="textarea"
               />
-              <Box mt={4}>
-                <InputField
-                  textarea={true}
-                  name="text"
-                  placeholder="Add your text here..."
-                  label="Text"
-                  type="textarea"
-                />
-              </Box>
+            </Box>
 
-              <Button
-                mt={4}
-                mx="auto"
-                type="submit"
-                isLoading={isSubmitting}
-                colorScheme="blue"
-              >
-                Add Post
-              </Button>
-            </Form>
-          )}
-        </Formik>
-      </NavBarContainer>
-    </>
+            <Button
+              mt={4}
+              mx="auto"
+              type="submit"
+              isLoading={isSubmitting}
+              colorScheme="blue"
+            >
+              Add Post
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </NavBarContainer>
   );
 };
 
