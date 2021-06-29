@@ -1,5 +1,4 @@
 import DataLoader from "dataloader";
-import { User } from "../entities/User";
 import { Upvote } from "../entities/Upvote";
 
 export const createUpvoteLoader = () =>
