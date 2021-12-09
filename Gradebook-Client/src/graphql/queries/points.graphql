@@ -1,0 +1,3 @@
+query Points($id: Int!) {
+  points(id: $id) 
+}

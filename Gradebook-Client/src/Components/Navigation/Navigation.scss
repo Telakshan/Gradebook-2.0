@@ -1,0 +1,33 @@
+.light {
+  background-color: aliceblue;
+
+  .loggedIn {
+    margin: auto 5px auto;
+  }
+}
+
+.dark {
+  background-color: #141823;
+
+//   .fix-padding: {
+//     padding: 0px;
+//   }
+
+  .loggedIn {
+    margin: auto 5px auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .light {
+    .loggedIn {
+      margin: 4px 0px 4px;
+    }
+  }
+
+  .dark {
+    .loggedIn {
+      margin: 4px 0px 4px;
+    }
+  }
+}

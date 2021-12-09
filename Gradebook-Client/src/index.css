@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+
+
+html {
+  min-height: 1000px;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Roboto Condensed", "Open sans condensed";
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: #90cdf4;
+}

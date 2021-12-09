@@ -1,0 +1,62 @@
+.container {
+    margin: 10px auto auto;
+    display: flex;
+
+    .username{
+      margin-top: 10px;
+    }
+  
+    .image {
+      margin: 10px auto auto;
+      max-width: 600px;
+      object-fit: contain;
+    }
+  
+    .text {
+      margin-bottom: 20px;
+    }
+  
+    .vote-group {
+      max-width: 50px;
+      display: flex;
+      flex-direction: row;
+  
+      button {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .containerDark{
+    margin: 10px auto auto;
+    color: #fff;
+    display: flex;
+    background-color: #0f202d;
+    max-width: 1140px;
+
+    .username{
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+  
+    .image {
+      margin: 10px auto auto;
+      max-width: 600px;
+      object-fit: contain;
+    }
+  
+    .text {
+      margin-bottom: 20px;
+    }
+  
+    .vote-group {
+      max-width: 50px;
+      display: flex;
+      flex-direction: row;
+      
+      button {
+        margin-right: 5px;
+        color: #fff;
+      }
+    }
+  }

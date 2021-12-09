@@ -1,0 +1,41 @@
+.login-container {
+  .login {
+    padding: 10px;
+    margin: 10px auto auto;
+    max-width: 500px;
+
+    .submit-button {
+      margin-bottom: 10px;
+    }
+
+    .danger {
+      color: rgb(172, 77, 77);
+    }
+  }
+}
+
+.login-container-dark {
+  background-color: #172a3a;
+  color: #fff;
+  .login {
+    padding: 10px;
+    margin: 0px auto auto;
+    max-width: 500px;
+
+    .submit-button {
+      margin-bottom: 10px;
+    }
+
+    .register{
+        color: lightblue;
+    }
+
+    .danger {
+      color: rgb(172, 77, 77);
+    }
+
+    .forgot {
+      color: lightblue;
+    }
+  }
+}

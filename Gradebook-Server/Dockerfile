@@ -1,8 +1,28 @@
-FROM node:12.18-alpine
-ENV NODE_ENV=production
+FROM node:14
+
 WORKDIR /usr/src/app
+
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
+
+RUN npm install ts-node
+
+RUN npm install 
+
+
 COPY . .
-EXPOSE 4000
-CMD ["npm", "start"]
+
+COPY .env.production .env
+
+
+RUN npm build
+
+
+ENV NODE_ENV production
+EXPOSE 8080
+
+
+CMD ["node", "dist/index.js"]
+USER node
+
+#RUN npm run typeorm migration:run   
+

@@ -1,42 +1,60 @@
 {
-  "name": "with-chakra-ui",
+  "name": "gradebook-client",
   "version": "0.1.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "gen": "graphql-codegen --config codegen.yml"
-  },
+  "private": true,
   "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
-    "@chakra-ui/icons": "^1.0.13",
-    "@chakra-ui/react": "^1.0.0",
-    "@emotion/core": "^11.0.0",
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
-    "@urql/exchange-graphcache": "^4.1.1",
-    "emotion-theming": "^11.0.0",
-    "formik": "^2.2.6",
-    "framer-motion": "^2.9.4",
-    "graphql": "^15.5.0",
-    "graphql-tag": "^2.12.4",
-    "isomorphic-unfetch": "^3.1.0",
-    "next": "latest",
-    "next-urql": "^3.1.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.2.0",
-    "react-is": "^17.0.2",
-    "sass": "^1.32.11",
-    "urql": "^2.0.1"
+    "@apollo/client": "^3.5.5",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.2",
+    "bootstrap": "^4.6.0",
+    "formik": "^2.2.9",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "sass": "^1.35.1",
+    "web-vitals": "^1.1.2"
   },
-  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "gen": "graphql-codegen --config codegen.yml",
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && aws s3 rm s3://gradebook-web-client.com/ --recursive && aws s3 cp ./build s3://gradebook-web-client.com/ --recursive --acl public-read"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "@graphql-codegen/cli": "1.21.4",
     "@graphql-codegen/typescript": "1.22.0",
     "@graphql-codegen/typescript-operations": "^1.17.16",
     "@graphql-codegen/typescript-urql": "^2.0.6",
-    "@types/node": "^14.14.33",
-    "typescript": "^4.2.3"
+    "@types/history": "^4.7.8",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "typescript": "^4.2.4"
   }
 }

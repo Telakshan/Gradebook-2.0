@@ -1,0 +1,36 @@
+.register-dark {
+  height: 100vh;
+  background-color: #172a3a;
+  color: #fff;
+
+  .contain {
+    padding-top: 20px;
+    margin: 0px auto auto;
+    max-width: 500px;
+  }
+
+  .danger {
+    color: rgb(172, 77, 77);
+  }
+
+  .login {
+    color: lightblue;
+  }
+  .forgot {
+    color: lightblue;
+  }
+}
+
+.register {
+  height: 100vh;
+
+  .danger {
+    color: rgb(172, 77, 77);
+  }
+
+  .contain {
+    padding-top: 20px;
+    margin: 0px auto auto;
+    max-width: 500px;
+  }
+}

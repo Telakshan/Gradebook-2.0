@@ -1,0 +1,69 @@
+.landing-page-container-dark {
+  min-height: 1000px;
+  height: 100%;
+  background-color: #172a3a;
+  color: #fff;
+  padding-top: 10px;
+  margin: 0px auto auto;
+
+  .failure {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .message {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    .arrow {
+      margin-right: 5px;
+    }
+  }
+
+  .end {
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .load-more {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.landing-page-container {
+  height: 100vh;
+
+  margin: 10px auto auto;
+  margin-bottom: 20px;
+
+  .failure {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .end {
+    text-align: center;
+  }
+
+  .message {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    .arrow {
+      margin-right: 5px;
+    }
+  }
+
+  .logged {
+    margin-left: 20%;
+  }
+
+  .load-more {
+    justify-content: center;
+    text-align: center;
+  }
+}
+

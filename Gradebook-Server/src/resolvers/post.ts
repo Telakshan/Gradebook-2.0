@@ -66,7 +66,7 @@ export class PostResolver {
 
   @Query(() => PaginatedPosts)
   async posts(
-    @Ctx() { req }: MyContext,
+    @Ctx() {}: MyContext,
     @Arg("limit", () => Int) limit: number,
     @Arg("cursor", () => String, { nullable: true }) cursor: string | null
   ): Promise<PaginatedPosts> {
@@ -102,6 +102,20 @@ export class PostResolver {
     @Ctx() {}: MyContext
   ): Promise<Post | undefined> {
     return Post.findOne(id);
+  }
+
+  @Query(() => Int, { nullable: true })
+  async points(@Arg("id", () => Int) id: any) {
+    const replacements: any[] = [id];
+
+    const post = await getConnection().query(
+      `
+      select points from post where "id" = $1
+      `,
+      replacements
+    );
+    if (post != null) return post[0].points;
+    return 0;
   }
 
   @Mutation(() => Post)
