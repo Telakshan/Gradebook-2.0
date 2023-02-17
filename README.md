@@ -1,5 +1,5 @@
 # Gradebook
-Check out the site [Here!](https://www.gradebook-web.com/)
+Check out the site [Here!](https://www.gradebook-web.com/) (Currently down due to heroku removing their free tier)
 
 ### Uses TypeScript, React, GraphQL, Nodejs, Postgres, Redis. 
 
